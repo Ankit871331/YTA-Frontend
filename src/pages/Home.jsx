@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Users, Calendar, Image as ImageIcon, ArrowRight, Star } from 'lucide-react';
-
+const API = import.meta.env.VITE_API_URL;
 
 export default function Home() {
   const fadeInUp = {
@@ -51,6 +51,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
             <span className="text-primary font-bold uppercase tracking-[0.3em] mb-4 block">Master Your Mind & Body</span>
+           <p>API: {import.meta.env.VITE_API_URL}</p>
             <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 leading-tight">
               ELITE <span className="text-primary">TAEKWONDO</span> <br /> ACADEMY
             </h1>
