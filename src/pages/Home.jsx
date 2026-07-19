@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Users, Calendar, Image as ImageIcon, ArrowRight, Star } from 'lucide-react';
+const { API } = import.meta.env.VITE_API_URL;
+
 
 export default function Home() {
   const fadeInUp = {
@@ -13,7 +15,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Helmet>
-        <title>Elite Taekwondo Academy | Martial Arts Excellence</title>
+  <title>{`Elite Taekwondo Academy | Martial Arts Excellence ${API}`}</title>
         <meta name="description" content="Join Elite Taekwondo Academy for world-class martial arts training. Programs for kids, teens, and adults. Discipline, respect, and excellence." />
         <script type="application/ld+json">
           {JSON.stringify({
