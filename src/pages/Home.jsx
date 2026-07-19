@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Users, Calendar, Image as ImageIcon, ArrowRight, Star } from 'lucide-react';
-const { API } = import.meta.env.VITE_API_URL;
 
 
 export default function Home() {

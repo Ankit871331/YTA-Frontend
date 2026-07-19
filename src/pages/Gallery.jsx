@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Maximize2, X } from 'lucide-react';
 import axios from 'axios';
-const { API } = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API_URL;
 
 export default function Gallery() {
   const [images, setImages] = useState([]);

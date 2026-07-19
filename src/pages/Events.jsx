@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Calendar, MapPin, Clock, ArrowRight, Filter, X, Info } from 'lucide-react';
 import axios from 'axios';
+const API = import.meta.env.VITE_API_URL;
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -13,7 +14,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/events');
+        const res = await axios.get(`${API}/api/events`);
         setEvents(res.data);
       } catch (err) {
         console.error('Error fetching events:', err);
