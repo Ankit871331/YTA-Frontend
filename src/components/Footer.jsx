@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center space-x-2">Contact
+            <Link to="/" className="flex items-center space-x-2">
               <Shield className="w-8 h-8 text-primary" />
               <span className="text-xl font-display font-bold uppercase tracking-tighter">YTA <span className="text-primary">TKD</span></span>
             </Link>
