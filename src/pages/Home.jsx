@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Helmet>
-  <title>{`Elite Taekwondo Academy | Martial Arts Excellence ${API}`}</title>
+        <title>Elite Taekwondo Academy | Martial Arts Excellence</title>
         <meta name="description" content="Join Elite Taekwondo Academy for world-class martial arts training. Programs for kids, teens, and adults. Discipline, respect, and excellence." />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -51,7 +51,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <span className="text-primary font-bold uppercase tracking-[0.3em] mb-4 block">Master Your Mind & Body</span>
+            <span className="text-primary font-bold uppercase tracking-[0.3em] mb-4 block">{`${API}Master Your Mind & Body}`}</span>
             <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 leading-tight">
               ELITE <span className="text-primary">TAEKWONDO</span> <br /> ACADEMY
             </h1>
