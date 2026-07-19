@@ -15,12 +15,12 @@ export default function Home() {
     <div className="overflow-hidden">
       <Helmet>
         <title>Youth Taekwondo Academy | Martial Arts Excellence</title>
-        <meta name="description" content="Join Elite Taekwondo Academy for world-class martial arts training. Programs for kids, teens, and adults. Discipline, respect, and excellence." />
+        <meta name="description" content="Join Youth Taekwondo Academy for world-class martial arts training. Programs for kids, teens, and adults. Discipline, respect, and excellence." />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SportsOrganization",
-            "name": "Elite Taekwondo Academy",
+            "name": "Youth Taekwondo Academy",
             "description": "Professional Martial Arts Academy",
             "url": "https://elitetkd.com",
             "logo": "https://elitetkd.com/logo.png",
@@ -52,7 +52,7 @@ export default function Home() {
           <motion.div {...fadeInUp}>
             <span className="text-primary font-bold uppercase tracking-[0.3em] mb-4 block">Master Your Mind & Body</span>
             <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 leading-tight">
-              ELITE <span className="text-primary">TAEKWONDO</span> <br /> ACADEMY
+              Youth <span className="text-primary">TAEKWONDO</span> <br /> ACADEMY
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
               Join the premier martial arts academy where discipline meets excellence. Transform your life through the power of Taekwondo.
@@ -120,7 +120,7 @@ export default function Home() {
                 <span className="text-primary font-bold uppercase tracking-widest mb-4 block">Our Legacy</span>
                 <h2 className="text-4xl md:text-5xl font-display mb-8">Decades of Martial Arts Mastery</h2>
                 <p className="text-gray-400 mb-8 leading-relaxed">
-                  Founded by Grand Master Kim, Elite Taekwondo Academy has been a beacon of martial arts excellence for over 30 years. Our mission is to provide high-quality instruction that fosters personal growth, physical fitness, and mental resilience.
+                  Founded by Grand Master Kim, Youth Taekwondo Academy has been a beacon of martial arts excellence for over 30 years. Our mission is to provide high-quality instruction that fosters personal growth, physical fitness, and mental resilience.
                 </p>
                 <Link to="/about" className="flex items-center space-x-2 text-primary font-bold uppercase tracking-widest hover:translate-x-2 transition-transform">
                   <span>Learn More About Us</span>
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Sarah Johnson", role: "Parent", text: "Elite TKD has transformed my son's confidence. The instructors are patient and truly care about each student's progress." },
+              { name: "Sarah Johnson", role: "Parent", text: "YTA TKD has transformed my son's confidence. The instructors are patient and truly care about each student's progress." },
               { name: "Michael Chen", role: "Black Belt", text: "The level of technical instruction here is unmatched. It's not just about kicking; it's about the philosophy behind the art." },
               { name: "Emma Williams", role: "Adult Student", text: "I started as a total beginner at 35. The community is so welcoming, and I've never felt more fit and focused." }
             ].map((testimonial, idx) => (
