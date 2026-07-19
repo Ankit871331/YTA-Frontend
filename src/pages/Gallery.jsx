@@ -13,7 +13,7 @@ export default function Gallery() {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const res = await axios.get(`${API}/gallery`);
+        const res = await axios.get(`${API}/api/gallery`);
         setImages(res.data);
       } catch (err) {
         console.error('Error fetching gallery:', err);
