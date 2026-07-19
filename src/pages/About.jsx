@@ -7,7 +7,7 @@ export default function About() {
   const [activeTab, setActiveTab] = useState('founder');
 
   const teamMembers = [
-    { name: 'Master David Kim', role: 'Head Instructor', rank: '7th Dan Black Belt', exp: '25+ Years', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974' },
+    { name: 'Shubham', role: 'Head Instructor', rank: '7th Dan Black Belt', exp: '25+ Years', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974' },
     { name: 'Instructor Elena Rossi', role: 'Youth Program Director', rank: '4th Dan Black Belt', exp: '12+ Years', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=2070' },
     { name: 'Instructor James Chen', role: 'Adult Program Coordinator', rank: '5th Dan Black Belt', exp: '15+ Years', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=1974' }
   ];

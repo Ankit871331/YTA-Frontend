@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Shield, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
-// lkdf;lksdf
 
 export default function Footer() {
   return (
