@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
             <Shield className="w-10 h-10 text-primary" />
-            <span className="text-2xl font-display font-bold tracking-tighter">ELITE <span className="text-primary">TKD</span></span>
+            <span className="text-2xl font-display font-bold tracking-tighter">YTA <span className="text-primary">TKD</span></span>
           </Link>
 
           {/* Desktop Nav */}
