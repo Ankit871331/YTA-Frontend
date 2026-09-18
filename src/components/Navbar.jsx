@@ -23,13 +23,23 @@ export default function Navbar() {
     { name: 'Portal', path: '/portal' },
     { name: 'Contact', path: '/contact' },
   ];
+const logoUrl =
+'https://drive.google.com/thumbnail?id=1DvybpbVNQ4d86YMu5U_dBLd-0zYMRKAE';    
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-dark/90 backdrop-blur-lg py-3 shadow-lg' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+          
+          
           <Link to="/" className="flex items-center space-x-2">
-            <Shield className="w-10 h-10 text-primary" />
+           <img
+              src={logoUrl}
+              alt="YTA TKD Logo"
+              referrerPolicy="no-referrer"
+              className="w-15 object-contain"
+            />
+            
             <span className="text-2xl font-display font-bold tracking-tighter">YTA <span className="text-primary">TKD</span></span>
           </Link>
 
