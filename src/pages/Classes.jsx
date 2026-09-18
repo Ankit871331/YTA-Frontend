@@ -67,10 +67,10 @@ export default function Classes() {
   ];
 
   const schedule = [
-    { time: "4:00 PM - 5:00 PM", mon: "Beginner", tue: "Beginner", wed: "Beginner", thu: "Beginner", fri: "Fight", sat: "Closed" },
-    { time: "5:00 PM - 6:00 PM", mon: "Intermediate", tue: "Intermediate", wed: "Intermediate", thu: "Fight", fri: "Sparring", sat: "Closed" },
-    { time: "6:00 PM - 7:00 PM", mon: "Advanced", tue: "Advanced", wed: "Advanced", thu: "Advanced", fri: "Fight", sat: "Closed" },
-    { time: "7:00 PM - 8:00 PM", mon: "Adults", tue: "Adults", wed: "Adults", thu: "Adults", fri: "Fight", sat: "Closed" },
+    { time: "4:00 PM - 5:00 PM", mon: "Beginner", tue: "Beginner", wed: "Beginner", thu: "Beginner", fri: "Sparring", sat: "Closed" },
+    { time: "5:00 PM - 6:00 PM", mon: "Intermediate", tue: "Intermediate", wed: "Intermediate", thu: "Intermediate", fri: "Sparring", sat: "Closed" },
+    { time: "6:00 PM - 7:00 PM", mon: "Advanced", tue: "Advanced", wed: "Advanced", thu: "Advanced", fri: "Sparring", sat: "Closed" },
+    { time: "7:00 PM - 8:00 PM", mon: "Adults", tue: "Adults", wed: "Adults", thu: "Adults", fri: "Sparring", sat: "Closed" },
     
   ];
 

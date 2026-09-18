@@ -62,9 +62,9 @@ export default function Contact() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {[
-                { icon: MapPin, title: "Visit Us", detail: "123 Martial Arts Way, NY 10001" },
-                { icon: Phone, title: "Call Us", detail: "+1 (555) 123-4567" },
-                { icon: Mail, title: "Email Us", detail: "info@elitetkd.com" },
+                { icon: MapPin, title: "Visit Us", detail: "Sec 22B near community center, Gurgaon Haryana 122001" },
+                { icon: Phone, title: "Call Us", detail: "+91 9560312832" },
+                { icon: Mail, title: "Email Us", detail: "youthtaekwondoacademy55@elitetkd.com" },
                 { icon: Send, title: "Socials", detail: "@EliteTKD_Academy" }
               ].map((item, idx) => (
                 <div key={idx} className="glass p-8 rounded-2xl border border-white/5">
@@ -78,7 +78,7 @@ export default function Contact() {
             {/* Map Embed */}
             <div className="glass rounded-3xl overflow-hidden h-80 border border-white/10">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2157071449434!2d-73.98784412424681!3d40.757978734839106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1709212345678!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3355.3567744156776!2d77.06319707549633!3d28.509483875732155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDMwJzM0LjEiTiA3N8KwMDMnNTYuOCJF!5e1!3m2!1sen!2sin!4v1789730034232!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, filter: 'grayscale(1) invert(1) contrast(1.2)' }} 
