@@ -40,7 +40,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&q=80&w=2070" 
+            src="https://drive.google.com/thumbnail?id=1tLYpUXbvVmYReOmD23on2-B20NdPAch6" 
             alt="Taekwondo Training" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"

@@ -23,7 +23,7 @@ export default function Classes() {
       age: "Ages 5-12", 
       desc: "Focus on fundamentals, coordination, and basic techniques. Perfect for those starting their martial arts journey.",
       longDesc: "Our Beginner Program is specifically designed to introduce children to the world of Taekwondo in a fun, safe, and structured environment. We focus on building a strong foundation of physical coordination while instilling core values like respect, discipline, and perseverance.",
-      features: ["Basic Stances & Kicks", "Discipline & Focus", "Self-Defense Basics", "2 Classes per Week"],
+      features: ["Basic Punches & Kicks", "Discipline & Focus", "Self-Defense Basics", "5 Classes per Week"],
       curriculum: [
         "Introduction to basic blocks and strikes",
         "Learning the first Poomsae (Form)",
@@ -38,7 +38,7 @@ export default function Classes() {
       age: "Ages 13+", 
       desc: "Advanced combinations, sparring techniques, and physical conditioning. Building strength and mental resilience.",
       longDesc: "The Intermediate Program takes practitioners to the next level by introducing more complex techniques and higher intensity training. Students begin to explore the competitive aspects of Taekwondo while deepening their understanding of the art's philosophy.",
-      features: ["Advanced Form (Poomsae)", "Olympic Sparring", "Board Breaking", "3 Classes per Week"],
+      features: ["Advanced Form (Poomsae)", "Olympic Sparring", "Board Breaking", "5 Classes per Week"],
       curriculum: [
         "Advanced kicking combinations",
         "Introduction to Olympic-style sparring",
@@ -50,10 +50,10 @@ export default function Classes() {
     },
     { 
       title: "Advanced Program", 
-      age: "Black Belt Club", 
+      age: "Adult 18+", 
       desc: "Mastery of the art, leadership training, and high-performance competition prep. For dedicated practitioners.",
       longDesc: "Reserved for our most dedicated students, the Advanced Program focuses on mastery. This elite group trains for high-level competitions and black belt excellence. It's not just about physical skill, but about becoming a leader in the dojo and the community.",
-      features: ["Mastery of All Forms", "Instructor Training", "Weaponry Basics", "Unlimited Classes"],
+      features: ["Mastery of All Forms", "Instructor Training", "Weaponry Basics", "5 Classes per Week"],
       curriculum: [
         "Mastery of all black belt forms",
         "High-performance competition training",
@@ -62,13 +62,16 @@ export default function Classes() {
       ],
       color: "border-primary",
       icon: Users
-    }
+    },
+    
   ];
 
   const schedule = [
-    { time: "4:00 PM - 5:00 PM", mon: "Beginner", tue: "Intermediate", wed: "Beginner", thu: "Intermediate", fri: "All Levels", sat: "Open Mat" },
-    { time: "5:15 PM - 6:15 PM", mon: "Intermediate", tue: "Beginner", wed: "Intermediate", thu: "Beginner", fri: "Sparring", sat: "Black Belt" },
-    { time: "6:30 PM - 7:30 PM", mon: "Advanced", tue: "Adults", wed: "Advanced", thu: "Adults", fri: "Open Mat", sat: "Closed" },
+    { time: "4:00 PM - 5:00 PM", mon: "Beginner", tue: "Beginner", wed: "Beginner", thu: "Beginner", fri: "Fight", sat: "Closed" },
+    { time: "5:00 PM - 6:00 PM", mon: "Intermediate", tue: "Intermediate", wed: "Intermediate", thu: "Fight", fri: "Sparring", sat: "Closed" },
+    { time: "6:00 PM - 7:00 PM", mon: "Advanced", tue: "Advanced", wed: "Advanced", thu: "Advanced", fri: "Fight", sat: "Closed" },
+    { time: "7:00 PM - 8:00 PM", mon: "Adults", tue: "Adults", wed: "Adults", thu: "Adults", fri: "Fight", sat: "Closed" },
+    
   ];
 
   return (
@@ -165,14 +168,14 @@ export default function Classes() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="glass p-12 rounded-2xl border border-white/10">
               <h3 className="text-2xl font-display mb-4">Monthly Membership</h3>
-              <div className="text-5xl font-display text-primary mb-6">$149<span className="text-lg text-gray-500">/mo</span></div>
+              <div className="text-5xl font-display text-primary mb-6">₹2,000<span className="text-lg text-gray-500">/mo</span></div>
               <p className="text-gray-400 mb-8">Full access to all age-appropriate classes, no long-term contracts.</p>
               <button className="btn-outline w-full">Sign Up Now</button>
             </div>
             <div className="glass p-12 rounded-2xl border-2 border-primary relative">
               <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-bl-lg">Best Value</div>
               <h3 className="text-2xl font-display mb-4">Annual Membership</h3>
-              <div className="text-5xl font-display text-primary mb-6">$1,499<span className="text-lg text-gray-500">/yr</span></div>
+              <div className="text-5xl font-display text-primary mb-6">₹20,000<span className="text-lg text-gray-500">/yr</span></div>
               <p className="text-gray-400 mb-8">Get 2 months free + a complimentary uniform (Dobok) and gear bag.</p>
               <button className="btn-primary w-full">Get Started</button>
             </div>
