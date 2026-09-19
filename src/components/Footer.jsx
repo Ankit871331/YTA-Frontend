@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Facebook, Instagram, Twitter, Mail, Phone, MapPin, Youtube  } from 'lucide-react';
+import { Shield, Facebook, Instagram, Twitter, Mail, Phone, MapPin, Youtube } from 'lucide-react';
 
 
 export default function Footer() {
@@ -10,13 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              
-            <img
-              src='https://drive.google.com/thumbnail?id=1DvybpbVNQ4d86YMu5U_dBLd-0zYMRKAE'
-              alt="YTA TKD Logo"
-              referrerPolicy="no-referrer"
-              className="w-15 object-contain"
-            />
+
+              <img
+                src='https://drive.google.com/thumbnail?id=1DvybpbVNQ4d86YMu5U_dBLd-0zYMRKAE'
+                alt="YTA TKD Logo"
+                referrerPolicy="no-referrer"
+                className="w-15 object-contain"
+              />
 
               <span className="text-xl font-display font-bold uppercase tracking-tighter">YTA <span className="text-primary">TKD</span></span>
             </Link>
@@ -60,15 +60,24 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-center space-x-3">
                 <MapPin size={18} className="text-primary" />
-                <span>Sec-22 Mullahera, Gurgaon Haryana</span>
+                <a href="https://maps.app.goo.gl/QrdGbxqyUrsYMHQEA">
+                  <span>Sec-22B Mullahera, Gurgaon Haryana</span>
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-primary" />
-                <span>+91 95603 12832</span>
+                <a href="tel:+919560312832">
+                  <span>+91 9560312832</span>
+                </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-primary" />
-                <span>subhamtkdc@gmail.com</span>
+              <li className="flex items-center space-x-3 ">
+                <Mail size={18} className="text-primary shrink-0" />
+                <a
+                  href="mailto:youthtaekwondoacademy55@gmail.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  youthtaekwondoacademy55@gmail.com
+                </a>
               </li>
             </ul>
           </div>
