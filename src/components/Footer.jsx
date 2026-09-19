@@ -60,7 +60,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-center space-x-3">
                 <MapPin size={18} className="text-primary" />
-                <a href="https://maps.app.goo.gl/QrdGbxqyUrsYMHQEA">
+                <a href="https://www.google.com/maps?q=28.50943374633789,77.06571197509766&z=17&hl=en">
                   <span>Sec-22B Mullahera, Gurgaon Haryana</span>
                 </a>
               </li>
