@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Shield, Facebook, Instagram, Twitter, Mail, Phone, MapPin, Youtube  } from 'lucide-react';
 
 
 export default function Footer() {
@@ -10,16 +10,25 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <Shield className="w-8 h-8 text-primary" />
+              
+            <img
+              src='https://drive.google.com/thumbnail?id=1DvybpbVNQ4d86YMu5U_dBLd-0zYMRKAE'
+              alt="YTA TKD Logo"
+              referrerPolicy="no-referrer"
+              className="w-15 object-contain"
+            />
+
               <span className="text-xl font-display font-bold uppercase tracking-tighter">YTA <span className="text-primary">TKD</span></span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Empowering individuals through the art of Taekwondo. Discipline, respect, and excellence in every kick.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook size={20} /></a>
+              <a href="https://www.facebook.com/share/1EnRhE82kS/?mibextid=wwXIfr" className="text-gray-400 hover:text-primary transition-colors"><Facebook size={20} /></a>
               <a href="https://www.instagram.com/youth_taekwondo_academy_" className="text-gray-400 hover:text-primary transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter size={20} /></a>
+              {/* <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter size={20} /></a> */}
+
+              <a href="https://www.youtube.com/@youthtaekwondoacademy" className="text-gray-400 hover:text-primary transition-colors"> <Youtube size={20} /></a>
             </div>
           </div>
 

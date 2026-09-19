@@ -39,9 +39,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://drive.google.com/thumbnail?id=1tLYpUXbvVmYReOmD23on2-B20NdPAch6" 
-            alt="Taekwondo Training" 
+          <img
+            src="https://drive.google.com/thumbnail?id=1tLYpUXbvVmYReOmD23on2-B20NdPAch6"
+            alt="Taekwondo Training"
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
           />
@@ -74,7 +74,7 @@ export default function Home() {
               { icon: Users, title: "Community", desc: "A supportive environment for students of all ages and levels." },
               { icon: Star, title: "Excellence", desc: "Striving for the highest standards in martial arts mastery." }
             ].map((feature, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,15 +96,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="relative"
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2072" 
-                  alt="Master Instructor" 
+                <img
+                  src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=2072"
+                  alt="Master Instructor"
                   className="rounded-2xl shadow-2xl relative z-10"
                   referrerPolicy="no-referrer"
                 />
@@ -120,7 +120,7 @@ export default function Home() {
                 <span className="text-primary font-bold uppercase tracking-widest mb-4 block">Our Legacy</span>
                 <h2 className="text-4xl md:text-5xl font-display mb-8">Decades of Martial Arts Mastery</h2>
                 <p className="text-gray-400 mb-8 leading-relaxed">
-                  Founded by Grand Master Kim, Youth Taekwondo Academy has been a beacon of martial arts excellence for over 30 years. Our mission is to provide high-quality instruction that fosters personal growth, physical fitness, and mental resilience.
+                  Youth Taekwondo Academy, founded in 2024 by Coach Shubham Kumar, offers professional Taekwondo training for youth. We focus on discipline, confidence, fitness, and self-defense in a positive and motivating environment. Join us to train hard, grow stronger, and become a champion in life.
                 </p>
                 <Link to="/about" className="flex items-center space-x-2 text-primary font-bold uppercase tracking-widest hover:translate-x-2 transition-transform">
                   <span>Learn More About Us</span>
@@ -141,9 +141,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Sarah Johnson", role: "Parent", text: "YTA TKD has transformed my son's confidence. The instructors are patient and truly care about each student's progress." },
-              { name: "Michael Chen", role: "Black Belt", text: "The level of technical instruction here is unmatched. It's not just about kicking; it's about the philosophy behind the art." },
-              { name: "Emma Williams", role: "Adult Student", text: "I started as a total beginner at 35. The community is so welcoming, and I've never felt more fit and focused." }
+              { name: "Shivansh Mishra", role: "Parent", text: "YTA TKD has transformed my son's confidence. The instructors are patient and truly care about each student's progress." },
+              { name: "Isham ", role: "Black Belt", text: "The level of technical instruction here is unmatched. It's not just about kicking; it's about the philosophy behind the art." },
+              { name: "Aditya", role: "Adult Student", text: "I started as a total beginner at 35. The community is so welcoming, and I've never felt more fit and focused." }
             ].map((testimonial, idx) => (
               <div key={idx} className="glass p-8 rounded-2xl relative">
                 <Star className="text-primary mb-6 fill-primary" size={24} />
