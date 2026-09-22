@@ -2,46 +2,108 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter } from 'lucide-react';
-import axios from 'axios';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+
+const TO_EMAIL = 'youthtaekwondoacademy55@gmail.com';
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const INITIAL_FORM = { name: '', email: '', message: '' };
+
+function validate(values) {
+  const errors = {};
+  if (!values.name) errors.name = 'Please enter your name.';
+  else if (values.name.length < 2) errors.name = 'Name must be at least 2 characters.';
+
+  if (!values.email) errors.email = 'Please enter your email.';
+  else if (!EMAIL_RE.test(values.email)) errors.email = 'Please enter a valid email address.';
+
+  if (!values.message) errors.message = 'Please enter a message.';
+  else if (values.message.length < 10) errors.message = 'Message must be at least 10 characters.';
+
+  return errors;
+}
 
 export default function Contact() {
   const location = useLocation();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
-  const [loading, setLoading] = useState(false);
 
+  // Prefill message when arriving from /programs?program=...
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const program = params.get('program');
+    const program = new URLSearchParams(location.search).get('program');
     if (program) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        message: `I would like to enroll in the ${program}. Please provide more information.`
+        message: `I would like to enroll in the ${program}. Please provide more information.`,
       }));
     }
-  }, [location]);
+  }, [location.search]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus({ type: '', message: '' });
-    try {
-      await axios.post('/api/contact', formData);
-      setStatus({ type: 'success', message: 'Message sent! We will get back to you soon.' });
-      setFormData({ name: '', email: '', message: '' });
-    } catch (err) {
-      setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
-    } finally {
-      setLoading(false);
-    }
+  const handleChange = (field) => (e) => {
+    const { value } = e.target;
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // 1. sanitize
+    const values = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    // 2. validate
+    const nextErrors = validate(values);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus({ type: 'error', message: 'Please fix the highlighted fields.' });
+      return;
+    }
+
+    // 3. build the mailto link
+    const subject = `New message from ${values.name} (via website)`;
+    const body = [
+      `Name: ${values.name}`,
+      `Email: ${values.email}`,
+      '',
+      'Message:',
+      values.message,
+    ].join('\n');
+
+    const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // 4. open the user's default email client
+    window.location.href = mailtoLink;
+
+    // 5. give feedback (the email client will open)
+    setStatus({
+      type: 'success',
+      message:
+        'Your email app is opening. Please press “Send” there to deliver your message.',
+    });
+
+    // optional: clear the form after a short delay
+    // setTimeout(() => setFormData(INITIAL_FORM), 1500);
+  };
+
+  const inputBase =
+    'w-full bg-white/5 border rounded-xl py-4 px-6 focus:border-primary outline-none transition-all';
+  const okBorder = 'border-white/10';
+  const badBorder = 'border-red-500/60';
 
   return (
     <div className="pt-32 pb-24">
       <Helmet>
         <title>Contact Us | Elite Taekwondo Academy</title>
-        <meta name="description" content="Have questions? Contact Elite Taekwondo Academy today. Visit our dojo, call us, or send a message. We're here to help you start your journey." />
+        <meta
+          name="description"
+          content="Have questions? Contact Elite Taekwondo Academy today. Visit our dojo, call us, or send a message. We're here to help you start your journey."
+        />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,10 +124,10 @@ export default function Contact() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {[
-                { icon: MapPin, title: "Visit Us", detail: "Sec 22B near community center, Gurgaon Haryana 122001" },
-                { icon: Phone, title: "Call Us", detail: "+91 9560312832" },
-                { icon: Mail, title: "Email Us", detail: "youthtaekwondoacademy55@elitetkd.com" },
-                { icon: Send, title: "Socials", detail: "@EliteTKD_Academy" }
+                { icon: MapPin, title: 'Visit Us', detail: 'Sec 22B near community center, Gurgaon Haryana 122001' },
+                { icon: Phone, title: 'Call Us', detail: '+91 9560312832' },
+                { icon: Mail, title: 'Email Us', detail: TO_EMAIL },
+                { icon: Send, title: 'Socials', detail: '@EliteTKD_Academy' },
               ].map((item, idx) => (
                 <div key={idx} className="glass p-8 rounded-2xl border border-white/5">
                   <item.icon className="text-primary mb-4" size={28} />
@@ -77,13 +139,14 @@ export default function Contact() {
 
             {/* Map Embed */}
             <div className="glass rounded-3xl overflow-hidden h-80 border border-white/10">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3355.3567744156776!2d77.06319707549633!3d28.509483875732155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDMwJzM0LjEiTiA3N8KwMDMnNTYuOCJF!5e1!3m2!1sen!2sin!4v1789730034232!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, filter: 'grayscale(1) invert(1) contrast(1.2)' }} 
-                allowFullScreen="" 
-                loading="lazy" 
+              <iframe
+                title="Elite Taekwondo Academy location"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3355.3567744156776!2d77.06319707549633!3d28.509483875732155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDMwJzM0LjEiTiA3N8KwMDMnNTYuOCJF!5e1!3m2!1sen!2sin!4v1789730034232!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(1) invert(1) contrast(1.2)' }}
+                allowFullScreen=""
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
@@ -97,56 +160,81 @@ export default function Contact() {
             className="glass p-8 md:p-12 rounded-3xl border border-white/10"
           >
             <h3 className="text-3xl font-display mb-8">Send a Message</h3>
+
             {status.message && (
-              <div className={`p-4 rounded-lg mb-8 text-center text-sm ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
+              <div
+                role="status"
+                aria-live="polite"
+                className={`p-4 rounded-lg mb-8 text-center text-sm ${
+                  status.type === 'success'
+                    ? 'bg-green-500/10 text-green-500'
+                    : 'bg-red-500/10 text-red-500'
+                }`}
+              >
                 {status.message}
               </div>
             )}
-            <form onSubmit={handleSubmit} className="space-y-6">
+
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Full Name</label>
-                <input 
-                  type="text" 
+                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                  Full Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:border-primary outline-none transition-all"
+                  onChange={handleChange('name')}
+                  aria-invalid={Boolean(errors.name)}
+                  className={`${inputBase} ${errors.name ? badBorder : okBorder}`}
                   placeholder="John Doe"
-                  required
                 />
+                {errors.name && <p className="text-red-400 text-xs mt-2">{errors.name}</p>}
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
-                <input 
-                  type="email" 
+                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:border-primary outline-none transition-all"
+                  onChange={handleChange('email')}
+                  aria-invalid={Boolean(errors.email)}
+                  className={`${inputBase} ${errors.email ? badBorder : okBorder}`}
                   placeholder="john@example.com"
-                  required
                 />
+                {errors.email && <p className="text-red-400 text-xs mt-2">{errors.email}</p>}
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Your Message</label>
-                <textarea 
+                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
                   rows="5"
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:border-primary outline-none transition-all resize-none"
+                  onChange={handleChange('message')}
+                  aria-invalid={Boolean(errors.message)}
+                  className={`${inputBase} resize-none ${errors.message ? badBorder : okBorder}`}
                   placeholder="How can we help you?"
-                  required
                 />
+                {errors.message && <p className="text-red-400 text-xs mt-2">{errors.message}</p>}
               </div>
-              <button 
-                type="submit" 
-                disabled={loading}
+
+              <button
+                type="submit"
                 className="btn-primary w-full py-4 text-lg flex items-center justify-center space-x-2"
               >
-                {loading ? 'Sending...' : (
-                  <>
-                    <span>Send Message</span>
-                    <Send size={20} />
-                  </>
-                )}
+                <span>Send Message</span>
+                <Send size={20} />
               </button>
             </form>
           </motion.div>

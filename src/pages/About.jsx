@@ -23,13 +23,13 @@ export default function About() {
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-display mb-8">About Our Academy</h1>
           <div className="flex justify-center space-x-4">
-            <button 
+            <button
               onClick={() => setActiveTab('founder')}
               className={`px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'founder' ? 'bg-primary text-white' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
             >
               Our Founder
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('team')}
               className={`px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'team' ? 'bg-primary text-white' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
             >
@@ -48,9 +48,9 @@ export default function About() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
             >
               <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&q=80&w=2070" 
-                  alt="Grand Master Kim" 
+                <img
+                  src="https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&q=80&w=2070"
+                  alt="Shubham Kumar"
                   className="rounded-2xl shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
@@ -91,9 +91,9 @@ export default function About() {
               {teamMembers.map((member, idx) => (
                 <div key={idx} className="glass rounded-2xl overflow-hidden group">
                   <div className="h-80 overflow-hidden relative">
-                    <img 
-                      src={member.img} 
-                      alt={member.name} 
+                    <img
+                      src={member.img}
+                      alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
