@@ -2,19 +2,16 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { MessageCircle, Phone, MapPin, Send } from 'lucide-react';
 
-const TO_EMAIL = 'youthtaekwondoacademy55@gmail.com';
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const INITIAL_FORM = { name: '', email: '', message: '' };
+// WhatsApp number in international format WITHOUT '+' or spaces
+const WHATSAPP_NUMBER = '919560312832';
+const INITIAL_FORM = { name: '', message: '' };
 
 function validate(values) {
   const errors = {};
   if (!values.name) errors.name = 'Please enter your name.';
   else if (values.name.length < 2) errors.name = 'Name must be at least 2 characters.';
-
-  if (!values.email) errors.email = 'Please enter your email.';
-  else if (!EMAIL_RE.test(values.email)) errors.email = 'Please enter a valid email address.';
 
   if (!values.message) errors.message = 'Please enter a message.';
   else if (values.message.length < 10) errors.message = 'Message must be at least 10 characters.';
@@ -51,7 +48,6 @@ export default function Contact() {
     // 1. sanitize
     const values = {
       name: formData.name.trim(),
-      email: formData.email.trim(),
       message: formData.message.trim(),
     };
 
@@ -63,31 +59,20 @@ export default function Contact() {
       return;
     }
 
-    // 3. build the mailto link
-    const subject = `New message from ${values.name} (via website)`;
-    const body = [
-      `Name: ${values.name}`,
-      `Email: ${values.email}`,
-      '',
-      'Message:',
-      values.message,
-    ].join('\n');
+    // 3. build the WhatsApp message
+    const text = `Hi, my name is ${values.name}.\n\n${values.message}`;
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
-    const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    // 4. open WhatsApp (new tab for better UX)
+    window.open(waLink, '_blank', 'noopener,noreferrer');
 
-    // 4. open the user's default email client
-    window.location.href = mailtoLink;
-
-    // 5. give feedback (the email client will open)
+    // 5. feedback
     setStatus({
       type: 'success',
-      message:
-        'Your email app is opening. Please press “Send” there to deliver your message.',
+      message: 'WhatsApp is opening. Just hit send to reach us!',
     });
 
-    // optional: clear the form after a short delay
+    // optional: clear form
     // setTimeout(() => setFormData(INITIAL_FORM), 1500);
   };
 
@@ -102,7 +87,7 @@ export default function Contact() {
         <title>Contact Us | Elite Taekwondo Academy</title>
         <meta
           name="description"
-          content="Have questions? Contact Elite Taekwondo Academy today. Visit our dojo, call us, or send a message. We're here to help you start your journey."
+          content="Have questions? Contact Elite Taekwondo Academy today. Visit our dojo, call us, or message us on WhatsApp. We're here to help you start your journey."
         />
       </Helmet>
 
@@ -126,7 +111,7 @@ export default function Contact() {
               {[
                 { icon: MapPin, title: 'Visit Us', detail: 'Sec 22B near community center, Gurgaon Haryana 122001' },
                 { icon: Phone, title: 'Call Us', detail: '+91 9560312832' },
-                { icon: Mail, title: 'Email Us', detail: TO_EMAIL },
+                { icon: MessageCircle, title: 'WhatsApp', detail: '+91 9560312832' },
                 { icon: Send, title: 'Socials', detail: '@EliteTKD_Academy' },
               ].map((item, idx) => (
                 <div key={idx} className="glass p-8 rounded-2xl border border-white/5">
@@ -195,24 +180,6 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  value={formData.email}
-                  onChange={handleChange('email')}
-                  aria-invalid={Boolean(errors.email)}
-                  className={`${inputBase} ${errors.email ? badBorder : okBorder}`}
-                  placeholder="john@example.com"
-                />
-                {errors.email && <p className="text-red-400 text-xs mt-2">{errors.email}</p>}
-              </div>
-
-              <div>
                 <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
                   Your Message
                 </label>
@@ -233,8 +200,8 @@ export default function Contact() {
                 type="submit"
                 className="btn-primary w-full py-4 text-lg flex items-center justify-center space-x-2"
               >
-                <span>Send Message</span>
-                <Send size={20} />
+                <span>Send on WhatsApp</span>
+                <MessageCircle size={20} />
               </button>
             </form>
           </motion.div>
