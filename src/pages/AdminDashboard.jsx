@@ -494,7 +494,7 @@ export default function AdminDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-dark/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-dark/90 backdrop-blur-sm flex items-start sm:items-center justify-center p-4 pt-28 sm:pt-4 overflow-y-auto"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -511,7 +511,7 @@ export default function AdminDashboard() {
                 </button>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="space-y-6 mt-80 sm:mt-0">
+              <form onSubmit={handleFormSubmit} className="space-y-6 pt-[200px] sm:mt-0">
                 {modal.type === 'students' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
