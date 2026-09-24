@@ -131,23 +131,23 @@ export default function AdminDashboard() {
     // Normalize dates so <input type="date"> works
     const normalized = data
       ? {
-          ...data,
-          dob: data.dob ? new Date(data.dob).toISOString().split('T')[0] : '',
-          joiningDate: data.joiningDate
-            ? new Date(data.joiningDate).toISOString().split('T')[0]
-            : new Date().toISOString().split('T')[0],
-          progress: (data.progress || []).map((p) => ({
-            ...p,
-            date: p.date ? new Date(p.date).toISOString().split('T')[0] : '',
-          })),
-        }
+        ...data,
+        dob: data.dob ? new Date(data.dob).toISOString().split('T')[0] : '',
+        joiningDate: data.joiningDate
+          ? new Date(data.joiningDate).toISOString().split('T')[0]
+          : new Date().toISOString().split('T')[0],
+        progress: (data.progress || []).map((p) => ({
+          ...p,
+          date: p.date ? new Date(p.date).toISOString().split('T')[0] : '',
+        })),
+      }
       : {
-          joiningDate: new Date().toISOString().split('T')[0],
-          feesPending: 0,
-          marks: 0,
-          attendance: 0,
-          progress: [],
-        };
+        joiningDate: new Date().toISOString().split('T')[0],
+        feesPending: 0,
+        marks: 0,
+        attendance: 0,
+        progress: [],
+      };
 
     setModal({ open: true, type, mode, data });
     setFormData(normalized);
@@ -286,7 +286,7 @@ export default function AdminDashboard() {
                       <p className="text-4xl font-display">{stats.events}</p>
                     </div>
                     <div className="bg-white/5 p-8 rounded-2xl border border-white/5">
-                      <IndianRupee  className="text-red-500 mb-4" size={32} />
+                      <IndianRupee className="text-red-500 mb-4" size={32} />
                       <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Pending Fees</p>
                       <p className="text-4xl font-display text-red-500">{stats.pendingFees}</p>
                     </div>
@@ -511,7 +511,7 @@ export default function AdminDashboard() {
                 </button>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6 mt-80 sm:mt-0">
                 {modal.type === 'students' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
@@ -522,7 +522,7 @@ export default function AdminDashboard() {
                         value={formData.name || ''}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className={inputCls}
-                        placeholder="John Doe"
+                        placeholder="Karen Sing"
                       />
                     </div>
 
